@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.6.0 <0.8.0;
-// 类型为bytes和字符串的变量是特殊数组。bytes类似于byte[]，但它在calldata中被紧密地打包。
+// 类型为bytes和字符串string的变量是特殊数组。bytes类似于byte[]，但它在calldata中被紧密地打包。
 // bytes（可变字节数组）应该优先使用，因为更便宜。
 
 contract TestBytes{

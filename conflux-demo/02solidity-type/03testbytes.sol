@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.6.0;
-//bytes1 byte  定长字节数组
+//bytes1 === byte  定长字节数组，也可以直接使用 byte
 contract TestBytesl {
     // 16进制  1个byte占8位 
     bytes1 _b = 0x01;

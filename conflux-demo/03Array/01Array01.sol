@@ -1,5 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.6.0 <0.8.0;
+
+// 定长数组  不可以修改length  不能使用push
+// 变长数组  不可以修改length  能使用push
+
 contract Array01 {
     //声明
     
