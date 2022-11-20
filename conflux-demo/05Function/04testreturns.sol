@@ -22,4 +22,12 @@ contract TestReturns{
     a=1;
     b=2;
   }
+  //接收返回值
+  function test3() public pure{
+    uint x;
+    uint y;
+    (x,y) = testReturns2();
+    // //只接受第二个
+    // ( ,y) = testReturns2();
+  }
 }
