@@ -41,12 +41,12 @@ contract TestAssembly {
     }
 
     function test2() public pure returns(uint){
-        //使用3+5，然后和“abc”进行与运算
+        //使用 add 3+5，然后和 45 进行 and 与运算
         assembly {
             let a := 3
             let b := 5
 
-            mstore(0x1,and(and(a,b), 45)) //与45进行按位与 运算  //返回 1
+            mstore(0x1,and(add(a,b), 45)) //and 与45进行按位与 运算  //返回 8
             return (0x1,32)
         }
     }
