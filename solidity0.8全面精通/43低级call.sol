@@ -26,7 +26,7 @@ contract Call {
     function callFoo(address _test) external payable {
         // 以低级call的方式  abi编码   调用合约方法 
         // 函数签名： "foo(string,uint256)",  参数一："call foo", 参数二：123
-        // 返回值两个：第一个bool，第二个bytes memory data
+        // 返回值两个：第一个bool，执行的状态。第二个bytes memory data（调用目标合约上的函数的返回值）
         // call{value: 111, gas: 5000 } 发送的主币 111 wei  携带5000个gas ,5000gas修改两个状态变量不够
         // call{value: 111 }
         (bool sucess, bytes memory _data) = _test.call{value: 111 }(abi.encodeWithSignature("foo(string,uint256)", "call foo", 123));

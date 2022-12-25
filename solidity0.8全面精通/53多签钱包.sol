@@ -102,6 +102,7 @@ contract MultiSigWallet {
 
         transaction.executed = true;
         //发送主币 低级call的方式
+        // transaction.data：传送的数据（16进制编码），如果目标地址是合约，还可能执行目标合约中的方法
         (bool success,) = transaction.to.call{value:transaction.value}(transaction.data);
         require(success,"tx failed");
         emit Execute(_txId);
