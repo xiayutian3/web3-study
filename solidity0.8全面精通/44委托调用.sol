@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0
 pragma solidity ^0.8.7; 
 
+// 委托调用 可以对合约进行升级
+
 /*
 A calls B ,sends 100 wei
     B calls C, sends 50 wei
