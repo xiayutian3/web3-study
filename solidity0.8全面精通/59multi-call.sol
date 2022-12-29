@@ -27,7 +27,7 @@ contract MultiCall {
     // address 目标合约的地址数组， data 目标合约的函数签名数组（也包含函数的参数）
     function multiCall(address[] calldata targets, bytes[] calldata data) external view returns (bytes[] memory){
         require(targets.length == data.length, "targets length != data length");
-        bytes[] memory results = new bytes[](data.length);
+        bytes[] memory results = new bytes[](data.length); //创建长度相等的 bytes数组
 
         for(uint i; i<targets.length; i++) {
             (bool success, bytes memory result) = targets[i].staticcall(data[i]); // view  静态调用：staticcall  ，不能用call（动态写入调用）
