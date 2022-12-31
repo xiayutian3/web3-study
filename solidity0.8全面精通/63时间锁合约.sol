@@ -38,7 +38,7 @@ contract TimeLock {
     mapping(bytes32 => bool) public queued; //记录交易id 映射
 
 
-    constructor(){
+    constructor() payable {
         owner = msg.sender;
     }
     // 接收主币的回退函数
@@ -167,7 +167,10 @@ contract TestTimeLock {
         timeLock = _timeLock;
     }
 
-    function test() external view {
+    // 接收主币的回退函数
+    receive() external payable {}
+
+    function test() external payable {
         require(msg.sender == timeLock,"not timelock");
     }
     //获取时间戳 + 100s
