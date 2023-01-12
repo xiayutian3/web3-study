@@ -9,9 +9,9 @@ import { defineComponent, onMounted } from 'vue'
 
 export default defineComponent({
   name: 'HomeView',
-  setup () {
+  setup() {
     onMounted(() => {
-      let myaccounts:any // 合约
+      let myaccounts: any // 合约
       // 连接合约代码
       window.addEventListener('load', () => {
         if (!window.web3) { // 用来判断你是否安装了metamask钱包
@@ -29,9 +29,9 @@ export default defineComponent({
       })
 
       // 读取操作
-      function getOwner () {
+      function getOwner() {
         const contractAddress = '0x4525635525255156225' // 合约地址
-        const ZombieFactory = new window.web3.eth.Contract(owner_abi, contractAddress)
+        const ZombieFactory = new window.web3.eth.Contract('owner_abi', contractAddress)
         ZombieFactory.methods.getOwner().call(function (err: any, res: string) {
           if (err) {
             console.log('An error occured', err)
@@ -40,18 +40,22 @@ export default defineComponent({
           alert('the owner is :' + res)
         })
       }
+      var sdf = {
+        es:456
+      }
 
       // 写入操作
-      function changeOwner () {
+      function changeOwner() {
         const newowner = (<HTMLInputElement>document.getElementById('newowner')).value
         const contractAddress = '0x4525635525255156225' // 合约地址
 
-        const ZombieFactory = new window.web3.eth.Contract(owner_abi, contractAddress)
+        const ZombieFactory = new window.web3.eth.Contract('owner_abi', contractAddress)
         const me = myaccounts[0]
-        const trans = ZombieFactory.methods.changeOwner(newowner)
-        trans.send({ from: me }).on('transactionHash', function (hash:string) {
+        const trans = ZombieFactory.methods.changeOwner(newowner);
+        // { from: me }
+        trans.send(sdf).on('transactionHash', function (hash: string) {
           console.log('hash: ', hash)
-        }).on('receipt', function (receipt:any) {
+        }).on('receipt', function (receipt: any) {
           console.log('receipt: ', receipt)
         })
       }
