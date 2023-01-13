@@ -52,7 +52,7 @@ export default defineComponent({
         const ZombieFactory = new window.web3.eth.Contract('owner_abi', contractAddress)
         const me = myaccounts[0]
         const trans = ZombieFactory.methods.changeOwner(newowner);
-        // { from: me }
+        // var obj = { from: me }
         trans.send(sdf).on('transactionHash', function (hash: string) {
           console.log('hash: ', hash)
         }).on('receipt', function (receipt: any) {
