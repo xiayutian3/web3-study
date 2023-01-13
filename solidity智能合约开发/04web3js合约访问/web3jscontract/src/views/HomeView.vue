@@ -1,15 +1,23 @@
 <template>
   <div class="home">
+    <button>获取owner</button>
+    <div>
+      <button>changeOwner</button>
+      <input type="text" v-model="newownerAddress">
+    </div>
 
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted } from 'vue'
+import { defineComponent, onMounted,ref } from 'vue'
+import {owner_abi} from '@/assets/owner'
 
 export default defineComponent({
   name: 'HomeView',
   setup() {
+    const newownerAddress = ref<number>();
+
     onMounted(() => {
       let myaccounts: any // 合约
       // 连接合约代码
@@ -31,8 +39,8 @@ export default defineComponent({
       // 读取操作
       function getOwner() {
         const contractAddress = '0x4525635525255156225' // 合约地址
-        const ZombieFactory = new window.web3.eth.Contract('owner_abi', contractAddress)
-        ZombieFactory.methods.getOwner().call(function (err: any, res: string) {
+        const ownercontract = new window.web3.eth.Contract(owner_abi, contractAddress) //通过web3，合约abi构造合约对象,方便后续调用
+        ownercontract.methods.getOwner().call(function (err: any, res: string) {
           if (err) {
             console.log('An error occured', err)
             return
@@ -40,20 +48,16 @@ export default defineComponent({
           alert('the owner is :' + res)
         })
       }
-      var sdf = {
-        es:456
-      }
 
       // 写入操作
       function changeOwner() {
         const newowner = (<HTMLInputElement>document.getElementById('newowner')).value
         const contractAddress = '0x4525635525255156225' // 合约地址
 
-        const ZombieFactory = new window.web3.eth.Contract('owner_abi', contractAddress)
+        const ZombieFactory = new window.web3.eth.Contract(owner_abi, contractAddress)
         const me = myaccounts[0]
         const trans = ZombieFactory.methods.changeOwner(newowner);
-        // var obj = { from: me }
-        trans.send(sdf).on('transactionHash', function (hash: string) {
+        trans.send({ from: me }).on('transactionHash', function (hash: string) {
           console.log('hash: ', hash)
         }).on('receipt', function (receipt: any) {
           console.log('receipt: ', receipt)
@@ -61,6 +65,10 @@ export default defineComponent({
       }
 
     })
+
+    return {
+      newownerAddress
+    }
   }
 })
 </script>
