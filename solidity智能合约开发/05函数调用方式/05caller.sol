@@ -18,13 +18,13 @@ contract Caller {
     }
     // 第一种方式调用
     // function setCalleex(uint _x) external {
-    //     Callee callee = Callee(calleeAddress); //转换为 Callee 的地址合约调用
+    //     Callee callee = Callee(calleeAddress); //转换为 Callee 的地址合约调用，用 Callee类型去重载地址
     //     callee.setx(_x);
     // }
 
     // 第二种方式调用 定义interface接口
     function setCalleex(uint _x) external {
-        MyCallee callee = MyCallee(calleeAddress); //转换为 MyCallee 的地址合约调用
+        MyCallee callee = MyCallee(calleeAddress); //转换为 MyCallee 的地址合约调用,用 MyCallee类型去重载地址
         callee.setx(_x);
     }
 }

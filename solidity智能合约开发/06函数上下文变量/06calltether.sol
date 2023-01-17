@@ -24,7 +24,7 @@ contract Caller {
         calleeAddress = ca;
     }
     function getTetherName() external view returns (string memory) {
-        MyTether tether = MyTether(calleeAddress); //转换为 MyTether 的地址合约调用
+        MyTether tether = MyTether(calleeAddress); //转换为 MyTether 的地址合约调用，,用 MyTether类型去重载地址
         return tether.name();
     }
     

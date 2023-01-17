@@ -32,7 +32,7 @@ contract Caller {
 
     // 调用者调用这个合约，这个合约再调用另一个合约
     function getCallerOutsideMsgSender() public view returns (address){
-        Callee cl = Callee(calleeAddress); //调用外部合约的函数
+        Callee cl = Callee(calleeAddress); //调用外部合约的函数  ,用 Callee类型去重载地址
         return cl.getCallerMsgSender();  //此时的msg.sender 是 Caller合约的地址
     }
     
