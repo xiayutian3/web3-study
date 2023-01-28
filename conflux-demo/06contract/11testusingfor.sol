@@ -31,6 +31,17 @@ library Search {
 
 contract TestUsingFor{
     // 将库指定为某个类型,用这个类型的数据去调用这个库的方法
+    // 也可以理解为： 让库的方法跟它所操作的第一个参数绑定，成为第一个参数的数据类型的方法。
+    // 例如 
+    //   library DemoFn {
+    //     function fn(uint a, unt b){
+    //         s = a+b;
+    //      }
+    //   }
+    //   using DemoFn for uint;
+    //   f(uint a, uint b){
+    //      a.fn(b)去调用函数
+    //   }
     using Search for uint[];
 
     uint[] data;
