@@ -1,0 +1,23 @@
+{
+  "name": "20dy-nft",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile": "hardhat compile",
+    "testnft": "hardhat test test/MyErc721Token.js",
+    "testnft1155": "hardhat test test/MyErc1155.js",
+    "deploy": "hardhat run --network localhost scripts/deployToken.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^2.0.1",
+    "hardhat": "^2.12.6"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.8.1"
+  }
+}
