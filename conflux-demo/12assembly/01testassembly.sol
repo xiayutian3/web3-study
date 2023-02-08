@@ -66,9 +66,10 @@ contract TestAssembly {
                 sum := add(sum,i)
             }
 
-            mstore(0x0,sum)  //返回值，先存再取值
-            return(0x0,32)
+            mstore(0x0,sum)  //返回值，先存再取值，加载到内存中，再返回
+            return(0x0,32)  //在返回出来（32个字节来存储数据）
         }
     }
+    
 
 }
