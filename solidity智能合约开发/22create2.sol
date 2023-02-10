@@ -61,7 +61,7 @@ contract FactoryAssembly {
             addr := create2(
                 callvalue(), // wei sent with current call
                 // Actual code starts after skipping the first 32 bytes
-                add(bytecode, 0x20), // 0x20表示 32个字节。偏移32字节后才是，bytecode数据开始的地方，然后相加
+                add(bytecode, 0x20), // 0x20表示 32个字节。bytecode偏移32字节后才是，bytecode数据开始的地方，
                 mload(bytecode), // Load the size of code contained in the first 32 bytes
                 _salt // Salt from function arguments
             )
