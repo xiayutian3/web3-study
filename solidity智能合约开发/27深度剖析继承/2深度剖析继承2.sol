@@ -2,6 +2,25 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.17;
 
+// 笔记：
+// super关键字：指的是c3序列化中某个合约的前驱，而不是该合约的超类（父类）！
+//         a
+//     /   \   \
+//    b    c    e
+//    \    /    /
+//       d     f
+//       \    / 
+//          g
+
+// c3线性规则：(例子：g is d,f 的继承顺序，d is b,c 的继承顺序)
+// 1.more-abstract-like to more-dirved
+// 2.兄弟之间的顺序被代码规定了
+// 3.Deterministic
+
+// solidity c3线性序列化的结果: g-f-e-d-c-b-a
+// 所以例子中的e的super是指向d的
+
+
 // Parent contracts can be called directly, or by using the keyword super.
 // By using the keyword super, all of the immediate parent contracts will be called.
 
