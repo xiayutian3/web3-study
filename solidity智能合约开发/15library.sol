@@ -1,6 +1,10 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.13;
 
+// library的运行机制
+// 1.当library含有public可见性的函数的时候，这个library要部署为单独的合约
+// 2.在完整的合约部署时，要通过linkref，将library合约地址交给使用它的合约，将两个合约连接起来
+
 library SafeMath {
     function add(uint256 x, uint256 y) internal pure returns (uint256) {
         uint256 z = x + y;

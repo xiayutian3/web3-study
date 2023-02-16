@@ -32,8 +32,8 @@ contract TestMemoryAndStorage {
     // 2.memory -> storage //值传递
     function memoryToStorage() public {
         uint8[3] memory c = [10,12,13];
-         a1 = c; //值传递 a1没有变化
-        c[1] = 52;
+         a1 = c; //值传递 状态数据a1变成了[10,12,13]
+        c[1] = 52; //但是 修改c的时候，a1没有发生变化还是[10,12,13]，所以说是值传递
     }
     // 3.storage -> storage  引用传递
     function storageToStorage() public {
